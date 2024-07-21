@@ -1,6 +1,4 @@
-# COP4521_Project
-
-# Group 25: Task Manager Application
+# Task Manager
 This application was developed to solve the problem of managing a collection
 of tasks as a group. It allows users to create groups and be added to existing
 groups. The managers of a group can create tasks for the group, add or remove
