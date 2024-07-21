@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/styles.css">
+
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/login">Log In</a>
+        <a href="/logout">Log Out</a>
+    </div>
+</head>
+
+<body>
+    <form action="{{ url_for('removeFromGroup', groupName=groupName) }}" method="POST">
+        <h1>Remove member from {{groupName}}</h1>
+        <label for="Name">Member name:</label>
+        <input type="text" name="Name" required /><br />
+
+        <input type="submit" value="Submit" /><br />
+
+        <a href="/groupView/{{groupName}}">Back</a><br>
+
+        {{ msg }}<br />
+
+        <table border=1 cellpadding=10>
+            <thead>
+                <td>{{ groupName}} Members</td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td align="center">{{ row['name'] }}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+
+    </form>
+</body>
+
+</html>

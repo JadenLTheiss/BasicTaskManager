@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Assign Task</title>
+  <link rel="stylesheet" href="../static/styles.css">
+
+  <div class="topnav">
+    <a href="/">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/login">Log In</a>
+    <a href="/logout">Log Out</a>
+  </div>
+</head>
+
+<body>
+  {% if manager %}
+  <p>Enter the name of a member of {{ groupData['name'] }} to whom this task ({{ taskData['title'] }}) will be assigned.
+  </p>
+  <form action="{{ url_for('assignTask', taskKey=taskData['taskKey']) }}" method="POST">
+    <label for="Name">Member name:</label>
+    <input type="text" name="Name" required /><br />
+
+    <input type="submit" value="Submit" /><br /><br />
+    <a href="/groupView/{{groupData['name']}}">Back</a><br>
+  </form>
+
+  <table border=1 cellpadding=10>
+    <thead>
+      <td>{{ groupData['name'] }} Members</td>
+    </thead>
+
+    {% for row in rows %}
+    <tr>
+      <td align="center">{{ row['name'] }}</td>
+    </tr>
+    {% endfor %}
+  </table><br>
+
+  {% else %}
+
+  <p>Are you sure you would like to assign yourself to this task ({{ taskData['title'] }})?</p>
+  <form action="{{ url_for('assignTask', taskKey=taskData['taskKey']) }}" method="POST">
+    <input type="radio" id="yes" name="answer" value="True" />
+    <label for="yes">Yes</label><br />
+    <input type="radio" id="no" name="answer" value="False" />
+    <label for="no">No</label><br />
+
+    <input type="submit" value="Submit" /><br />
+  </form>
+  {% endif %}
+  {{ msg }}<br />
+</body>
+
+</html>

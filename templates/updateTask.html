@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/styles.css">
+
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/login">Log In</a>
+        <a href="/logout">Log Out</a>
+    </div>
+</head>
+
+<body>
+    <h1>Group: {{groupData['name']}}</h1>
+    <h2>Task: {{taskData['title']}}</h2>
+    <h3>Assigned to: {{ assignedUser }}</h3>
+    {% if manager and assignedUser != 'Unassigned' %}
+    <a href="/unassignTask/{{taskData['taskKey']}}">Unassign Task</a><br /><br />
+    {% endif %}
+
+
+
+    <form action="{{ url_for('updateTask', taskKey=taskData['taskKey']) }}" method="POST">
+        <label for="updates">Log update:</label><br>
+        <textarea name="updates" id="updates"></textarea><br>
+
+        <label for="status">Mark Status:</label><br>
+        <select name="status" id="status">
+            <option value="Started">Started</option>
+            <option value="In-Progress">In-Progress</option>
+            <option value="Needs Review">Needs Review</option>
+            <option value="Completed">Completed</option>
+        </select><br><br>
+        <input type="submit" value="Submit" /><br><br>
+        <a href="/groupView/{{groupData['name']}}">Back</a><br>
+        {{ msg }}<br />
+    </form>
+
+    <table border=1 cellpadding=10>
+        <thead>
+            <td>#</td>
+            <td>Update</td>
+        </thead>
+
+        {% for update in taskData['updates'] %}
+        <tr>
+            <td>{{ loop.index0 }}</td>
+            <td>{{ update }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>

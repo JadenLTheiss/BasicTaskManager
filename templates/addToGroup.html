@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../static/styles.css">
+
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/profile">Profile</a>
+        <a href="/login">Log In</a>
+        <a href="/logout">Log Out</a>
+    </div>
+</head>
+
+<body>
+    <form action="{{ url_for('addToGroup', groupName=groupName) }}" method="POST">
+        <h1>Add member to {{groupName}}</h1>
+        <label for="Name">New member name:</label>
+        <input type="text" name="Name" required /><br />
+
+        <input type="submit" value="Submit" /><br />
+        {{ msg }}<br />
+        <a href="/groupView/{{groupName}}">Back</a><br>
+    </form>
+</body>
+
+</html>

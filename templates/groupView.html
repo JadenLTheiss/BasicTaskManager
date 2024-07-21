@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../static/styles.css" />
+
+    <div class="topnav">
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/login">Log In</a>
+      <a href="/logout">Log Out</a>
+    </div>
+  </head>
+
+  <body>
+    <h1>Group View for {{groupName}}</h1>
+    <table border="1" cellpadding="10">
+      <thead>
+        <td>Title</td>
+        <td>Description</td>
+        <td>Status</td>
+        <td>Assigned To</td>
+        <td>Date</td>
+      </thead>
+
+      {% for row in rows %}
+      <tr>
+        <td>
+          <a href="/updateTask/{{ row['taskKey'] }}">{{ row['title'] }}</a>
+        </td>
+        <td>{{ row["description"] }}</td>
+        <td>{{ row["status"] }}</td>
+        {% if row["assignedTo"] == "Unassigned" %}
+        <td>
+          <a href="/assignTask/{{ row['taskKey'] }}">{{ row['assignedTo'] }}</a>
+        </td>
+        {% else %}
+        <td>{{ row["assignedTo"] }}</td>
+        {% endif %}
+        <td>{{ row["date"] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br />
+    {% if managerID %}
+    <!-- Only display the button if the user is the group's manager -->
+    <a href="/createTask/{{groupName}}"><button>Create Task</button></a><br />
+    <a href="/addToGroup/{{groupName}}"><button>Add Member</button></a><br />
+    {% if groupName != 'Default Group' %}
+    <a href="/removeFromGroup/{{groupName}}"><button>Remove Member</button></a
+    ><br />
+    {% else %}
+    <p>Cannot remove users from Default Group</p>
+    {% endif %} {% else %}
+    <p>
+      You do not have permissions to create tasks or add/remove members in this
+      group.
+    </p>
+    {% endif %}
+  </body>
+</html>

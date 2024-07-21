@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="../static/styles.css">
+  <div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/login">Log In</a>
+    <a href="/logout">Log Out</a>
+  </div>
+  <title>Home</title>
+</head>
+
+<body>
+  <h2>Welcome: {{ currentUsername }}</h2></br>
+  <h3>Current groups:</h3>
+  <table border=1 cellpadding=10>
+    <thead>
+      <td>Name</td>
+      <td>Description</td>
+      <td>Manager</td>
+    </thead>
+
+    {% for row in rows %}
+    <tr>
+      <td><a href="/groupView/{{ row['name'] }}">{{ row['name'] }}</a></td>
+
+
+      <td>{{ row["description"] }}</td>
+      <td>{{ row["managers"] }}</td>
+    </tr>
+    {% endfor %}
+  </table><br>
+  <a href="/createGroup"><button>Create a New Group</button></a><br>
+  </form>
+</body>
+
+</html>

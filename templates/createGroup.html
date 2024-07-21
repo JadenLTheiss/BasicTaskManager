@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="../static/styles.css">
+
+  <div class="topnav">
+    <a href="/">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/login">Log In</a>
+    <a href="/logout">Log Out</a>
+  </div>
+</head>
+
+<body>
+  <form action="{{ url_for('createGroup') }}" method="POST">
+    <h1>Create a new group!</h1>
+    <h3>Please enter group information</h3>
+    <label for="Name">Group Name:</label>
+    <input type="text" name="Name" required /><br />
+
+    <label for="Description">Group Description:</label>
+    <input type="text" name="Description" required /><br />
+
+    <input type="submit" value="Submit" /><br />
+    {{ msg }}<br />
+  </form>
+</body>
+
+</html>
