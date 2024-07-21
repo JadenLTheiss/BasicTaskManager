@@ -1,0 +1,27 @@
+/*CSS from https://www.w3schools.com/howto/howto_js_topnav.asp*/
+/* Background color*/
+.topnav {
+    background-color: #262626;
+    overflow: auto;
+}
+
+/* Text */
+.topnav a {
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 16px;
+    font-size: 18px;
+}
+
+/* on hover */
+.topnav a:hover {
+    background-color: #b3b1b1;
+    color: black;
+}
+
+/* active link color */
+.topnav a.active {
+    background-color: #04aa39;
+    color: white;
+}
