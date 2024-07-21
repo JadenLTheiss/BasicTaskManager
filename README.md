@@ -65,28 +65,6 @@ running the source code by following this link:
 https://jadenltheiss.pythonanywhere.com/
 
 
-## Separation of Work
-Samuel Iturra: 
-- Set up the FireBase database and its connection to the application.
-- Created Python functions to allow manipulation of the database.
-- Implemented group and task creation.
-- Implemented the groundwork for creating tasks.
-- Worked on getting data sent to other pages through the url.
-
-Jaden Theiss:
-- Set up html pages/templates.
-- Implemented the styling of the app.
-- Created the navbar.
-- Worked on getting data sent to other pages through the url.
-- Deployed application using 'PythonAnywhere'.
-
-Charlie Penner:
-- Set up the Flask app and routes to pages.
-- Set up user login/logout using Flask sessions.
-- Implemented password hashing.
-- Set up profile page, update username/password and delete account.
-- Worked on redirecting and page navigation.
-  
 Ilya Kogan:
 - Began setup for task filtering based on priority/category
 - Created a new table called tasks in DB
